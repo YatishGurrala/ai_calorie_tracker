@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'home_screen.dart';
 import 'graph_screen.dart';
 import 'settings_screen.dart';
+import 'social_feed_screen.dart';
+import 'create_post_screen.dart';
 
 class MainScreen extends StatefulWidget {
+  const MainScreen({Key? key}) : super(key: key);
+
   @override
   _MainScreenState createState() => _MainScreenState();
 }
@@ -12,9 +16,10 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _screens = [
     HomeScreen(),
+    SocialFeedScreen(),
+    CreatePostScreen(),
     GraphScreen(),
     SettingsScreen(),
-
   ];
 
   @override
@@ -28,10 +33,19 @@ class _MainScreenState extends State<MainScreen> {
             _currentIndex = index;
           });
         },
+        type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.people),
+            label: 'Social',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_circle_outline),
+            label: 'Post',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bar_chart),

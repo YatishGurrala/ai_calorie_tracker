@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({Key? key}) : super(key: key);
+
   void _navigateToOnboarding(BuildContext context) {
     Navigator.pushReplacementNamed(context, '/onboarding');
   }

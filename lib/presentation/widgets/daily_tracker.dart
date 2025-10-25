@@ -41,7 +41,7 @@ class _DailyTrackerState extends State<DailyTracker> {
 
   @override
   Widget build(BuildContext context) {
-    final targetCalories = userData?.estimatedCalories?.toDouble() ?? 2000.0;
+    final targetCalories = userData?.estimatedCalories.toDouble() ?? 2000.0;
 
     return Container(
       padding: EdgeInsets.all(16),

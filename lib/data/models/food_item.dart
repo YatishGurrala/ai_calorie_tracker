@@ -26,7 +26,8 @@ class FoodItem {
     required this.timestamp,
   });
 
-  factory FoodItem.fromJson(Map<String, dynamic> json) => _$FoodItemFromJson(json);
+  factory FoodItem.fromJson(Map<String, dynamic> json) =>
+      _$FoodItemFromJson(json);
   Map<String, dynamic> toJson() => _$FoodItemToJson(this);
 
   FoodItem copyWith({

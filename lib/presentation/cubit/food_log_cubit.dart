@@ -63,7 +63,7 @@ class FoodLogCubit extends Cubit<FoodLogState> {
       final meals = await _repository.getDailyFoodLog(DateTime.now());
       final totals = _calculateTotals(meals);
       final weeklyData = await _loadWeeklyData();
-      
+
       emit(state.copyWith(
         meals: meals,
         totalCalories: totals['calories'],
@@ -108,14 +108,14 @@ class FoodLogCubit extends Cubit<FoodLogState> {
   Future<List<double>> _loadWeeklyData() async {
     final List<double> weeklyData = [];
     final now = DateTime.now();
-    
+
     for (int i = 6; i >= 0; i--) {
       final date = now.subtract(Duration(days: i));
       final meals = await _repository.getDailyFoodLog(date);
       final calories = meals.fold(0.0, (sum, meal) => sum + meal.calories);
       weeklyData.add(calories);
     }
-    
+
     return weeklyData;
   }
 
@@ -125,14 +125,16 @@ class FoodLogCubit extends Cubit<FoodLogState> {
     result.fold(
       (failure) {
         // Emit error message
-        emit(state.copyWith(error: failure, successMessage: null, isLoading: false));
+        emit(state.copyWith(
+            error: failure, successMessage: null, isLoading: false));
       },
       (meal) async {
         await addMeal(meal);
         // Emit success message
         emit(state.copyWith(
           error: null,
-          successMessage: 'Food "${meal.name}" detected successfully and added to the log.',
+          successMessage:
+              'Food "${meal.name}" detected successfully and added to the log.',
           isLoading: false,
         ));
       },
@@ -153,7 +155,7 @@ class FoodLogCubit extends Cubit<FoodLogState> {
     ));
   }
 
-    Future<void> deleteMeal(FoodItem meal) async {
+  Future<void> deleteMeal(FoodItem meal) async {
     try {
       await _repository.deleteFoodItem(meal);
       await loadDailyLog();
@@ -170,5 +172,4 @@ class FoodLogCubit extends Cubit<FoodLogState> {
       emit(state.copyWith(error: e.toString()));
     }
   }
-
 }

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../data/models/food_item.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -90,7 +89,10 @@ class MealDetailScreen extends StatelessWidget {
             SizedBox(height: 16),
             Text(
               'Details',
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.bold),
+              style: Theme.of(context)
+                  .textTheme
+                  .titleMedium
+                  ?.copyWith(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8),
             DetailListItem(
@@ -153,12 +155,18 @@ class DetailListItem extends StatelessWidget {
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black87),
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87),
             ),
           ),
           Text(
             value,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.grey[700]),
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: Colors.grey[700]),
           ),
         ],
       ),

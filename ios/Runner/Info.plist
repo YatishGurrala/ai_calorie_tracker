@@ -51,3 +51,7 @@
 	</array>
 </dict>
 </plist>
+	<key>NSCameraUsageDescription</key>
+	<string>This app needs camera access to scan food and barcodes</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app needs photos access to get pictures of food for calorie tracking</string>

@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -25,7 +23,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   await _loadEnvironmentFile();
-  
+
   // Initialize SharedPreferences
   final prefs = await SharedPreferences.getInstance();
   final showOnboarding = !(prefs.getBool('onboarding_complete') ?? false);
@@ -33,7 +31,7 @@ void main() async {
   // Initialize services and repositories
   final foodService = FoodService();
   final foodRepository = FoodRepository(foodService, prefs);
-  
+
   runApp(MyApp(
     showOnboarding: showOnboarding,
     foodRepository: foodRepository,
@@ -43,7 +41,7 @@ void main() async {
 class MyApp extends StatelessWidget {
   final bool showOnboarding;
   final FoodRepository foodRepository;
-  
+
   const MyApp({
     required this.showOnboarding,
     required this.foodRepository,
@@ -63,7 +61,7 @@ class MyApp extends StatelessWidget {
         home: showOnboarding ? OnboardingScreen() : MainScreen(),
         routes: {
           '/main': (context) => MainScreen(),
-          '/home': (context) => HomeScreen(), 
+          '/home': (context) => HomeScreen(),
           '/onboarding': (context) => OnboardingScreen(),
           '/settings': (context) => SettingsScreen(),
 // Ensures `/home` route is defined

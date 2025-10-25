@@ -4,6 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../cubit/food_log_cubit.dart';
 
 class GraphScreen extends StatelessWidget {
+  const GraphScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,8 +46,8 @@ class GraphScreen extends StatelessWidget {
                         leftTitles: AxisTitles(
                           sideTitles: SideTitles(
                             showTitles: true,
-                            getTitlesWidget: (value, meta) => 
-                              Text('${value.toInt()}'),
+                            getTitlesWidget: (value, meta) =>
+                                Text('${value.toInt()}'),
                             interval: 500,
                           ),
                         ),
@@ -54,14 +56,22 @@ class GraphScreen extends StatelessWidget {
                             showTitles: true,
                             getTitlesWidget: (value, meta) {
                               switch (value.toInt()) {
-                                case 0: return Text('Mon');
-                                case 1: return Text('Tue');
-                                case 2: return Text('Wed');
-                                case 3: return Text('Thu');
-                                case 4: return Text('Fri');
-                                case 5: return Text('Sat');
-                                case 6: return Text('Sun');
-                                default: return Text('');
+                                case 0:
+                                  return Text('Mon');
+                                case 1:
+                                  return Text('Tue');
+                                case 2:
+                                  return Text('Wed');
+                                case 3:
+                                  return Text('Thu');
+                                case 4:
+                                  return Text('Fri');
+                                case 5:
+                                  return Text('Sat');
+                                case 6:
+                                  return Text('Sun');
+                                default:
+                                  return Text('');
                               }
                             },
                           ),
@@ -95,9 +105,9 @@ class GraphScreen extends StatelessWidget {
   }
 
   Widget _buildWeeklyStats(FoodLogState state) {
-    final avgCalories = state.weeklyData.isEmpty 
-      ? 0.0 
-      : state.weeklyData.reduce((a, b) => a + b) / state.weeklyData.length;
+    final avgCalories = state.weeklyData.isEmpty
+        ? 0.0
+        : state.weeklyData.reduce((a, b) => a + b) / state.weeklyData.length;
 
     return Card(
       child: Padding(
@@ -135,8 +145,6 @@ class GraphScreen extends StatelessWidget {
       ),
     );
   }
-
-
 
   Widget _buildStatItem(String label, String value, IconData icon) {
     return Column(

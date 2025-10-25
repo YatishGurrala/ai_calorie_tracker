@@ -5,6 +5,8 @@ import '../../data/local/preference_manager.dart';
 import '../../data/models/user_data.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({Key? key}) : super(key: key);
+
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }
@@ -66,7 +68,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       carbsGoal: macroGoals['carbsGoal']!,
     );
 
-    final prefManager = PreferenceManager(await SharedPreferences.getInstance());
+    final prefManager =
+        PreferenceManager(await SharedPreferences.getInstance());
     await prefManager.saveUserData(userData);
   }
 
@@ -134,7 +137,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(entry.key, style: TextStyle(fontWeight: FontWeight.bold)),
+                        Text(entry.key,
+                            style: TextStyle(fontWeight: FontWeight.bold)),
                         Text(
                           entry.value,
                           style: TextStyle(fontSize: 12, color: Colors.grey),
@@ -153,16 +157,19 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false, // Prevents keyboard from pushing up content
-      appBar: _currentPage == 0 ? AppBar(
-        automaticallyImplyLeading: false,
-        actions: [
-          TextButton(
-            onPressed: _skipToMain,
-            child: Text('Skip'),
-          ),
-        ],
-      ) : null,
+      resizeToAvoidBottomInset:
+          false, // Prevents keyboard from pushing up content
+      appBar: _currentPage == 0
+          ? AppBar(
+              automaticallyImplyLeading: false,
+              actions: [
+                TextButton(
+                  onPressed: _skipToMain,
+                  child: Text('Skip'),
+                ),
+              ],
+            )
+          : null,
       body: PageView(
         controller: _pageController,
         physics: NeverScrollableScrollPhysics(),
@@ -220,7 +227,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               value: userGoal,
               isExpanded: true,
               items: ['Weight Loss', 'Maintenance', 'Muscle Gain']
-                  .map((goal) => DropdownMenuItem(value: goal, child: Text(goal)))
+                  .map((goal) =>
+                      DropdownMenuItem(value: goal, child: Text(goal)))
                   .toList(),
               onChanged: (value) => setState(() => userGoal = value),
               hint: Text('Select Your Goal'),
@@ -244,12 +252,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 height: 48,
                 width: 120,
                 child: TextButton(
-                  onPressed: _currentPage > 0 
-                    ? () => _pageController.previousPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      )
-                    : null,
+                  onPressed: _currentPage > 0
+                      ? () => _pageController.previousPage(
+                            duration: Duration(milliseconds: 300),
+                            curve: Curves.easeInOut,
+                          )
+                      : null,
                   child: Text(
                     _currentPage > 0 ? 'Back' : '',
                     style: TextStyle(fontSize: 16),
