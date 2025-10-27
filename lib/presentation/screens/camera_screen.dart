@@ -53,7 +53,7 @@ class _CameraScreenState extends State<CameraScreen> {
     try {
       await _initializeControllerFuture;
       final image = await _controller?.takePicture();
-      
+
       if (image != null) {
         final imageFile = File(image.path);
         context.read<FoodLogCubit>().addMealFromImage(imageFile);
@@ -85,7 +85,7 @@ class _CameraScreenState extends State<CameraScreen> {
               Center(
                 child: CircularProgressIndicator(),
               ),
-              
+
             // Gallery Button
             Positioned(
               top: 20,

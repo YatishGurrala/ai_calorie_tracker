@@ -17,7 +17,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
   void _openCameraScreen(BuildContext context) {
     Navigator.push(
       context,

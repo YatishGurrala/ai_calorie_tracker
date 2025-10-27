@@ -17,10 +17,10 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
   void _submitFood() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      
+
       // TODO: Implement food detection with text input
       // context.read<FoodLogCubit>().addMealFromText(_foodName, _description);
-      
+
       Navigator.pop(context);
     }
   }
